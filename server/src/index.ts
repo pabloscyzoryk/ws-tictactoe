@@ -8,6 +8,7 @@ import process from 'process';
 import { RoomI } from "./interfaces/RoomI";
 
 const rooms: { [key: number | string]: RoomI } = {};
+const PORT = process.env.PORT || 8000;
 
 // server init
 const httpServer = createServer();
@@ -16,6 +17,8 @@ const io = new Server(httpServer, {
     origin: process.env.CLIENT_PORT || '*',
   },
 });
+
+console.log('Server up and running :)');
 
 io.on("connection", (socket: Socket) => {
   console.log(`new connection: ${socket.id}`);
@@ -193,4 +196,4 @@ io.on("connection", (socket: Socket) => {
   });
 });
 
-httpServer.listen(8000);
+httpServer.listen(PORT);
