@@ -13,7 +13,7 @@ const rooms: { [key: number | string]: RoomI } = {};
 const httpServer = createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: [process.env.CLIENT_PORT],
+    origin: process.env.CLIENT_PORT || '*',
   },
 });
 
