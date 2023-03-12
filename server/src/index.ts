@@ -2,19 +2,17 @@
 import { Server, Socket } from "socket.io";
 import { createServer } from "http";
 import checkWinner from "./utils/checkWinner.js";
-import process from 'process';
 
 // types & interfaces
 import { RoomI } from "./interfaces/RoomI";
 
 const rooms: { [key: number | string]: RoomI } = {};
-const PORT = process.env.PORT || 8000;
 
 // server init
 const httpServer = createServer();
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.CLIENT_PORT || '*',
+    origin: '*',
   },
 });
 
@@ -196,4 +194,4 @@ io.on("connection", (socket: Socket) => {
   });
 });
 
-httpServer.listen(PORT);
+httpServer.listen(5000);
