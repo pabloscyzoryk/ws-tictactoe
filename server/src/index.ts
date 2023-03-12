@@ -6,6 +6,8 @@ import checkWinner from "./utils/checkWinner.js";
 // types & interfaces
 import { RoomI } from "./interfaces/RoomI";
 
+const PORT = process.env.PORT || 8000;
+
 const rooms: { [key: number | string]: RoomI } = {};
 
 // server init
@@ -194,4 +196,4 @@ io.on("connection", (socket: Socket) => {
   });
 });
 
-httpServer.listen(5432);
+httpServer.listen(PORT);
