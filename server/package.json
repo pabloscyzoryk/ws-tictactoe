@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --quiet ./dist/index.js",
     "start": "node ./dist/index.js",
-    "build-host": "tsc",    
+    "build-host": "npx tsc",    
     "build": "tsc --watch"
   },
   "repository": {
