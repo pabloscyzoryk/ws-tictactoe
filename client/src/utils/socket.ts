@@ -2,9 +2,7 @@ import { io } from 'socket.io-client';
 
 const PORT = import.meta.env.VITE_SOCKET_PORT || 'http://localhost:8000';
 
-const socket = io(PORT, {
-    withCredentials: true,
-});
+const socket = io(PORT);
 
 export const socketEmit = (eventName: string, ...data: any[]) => {
     socket.emit(eventName, ...data);
