@@ -15,8 +15,6 @@ import Score from "./Score";
 import Chat from './Chat';
 import WonMark from './WonMark';
 import { MessageI } from "../../interfaces/MessageI";
-import useDisconnect from "../../hooks/useDisconnect";
-
 
 const Game = () => {
   const { id: roomId } = useParams();
@@ -29,8 +27,6 @@ const Game = () => {
   const [status, setStatus] = useState<string>('');
   const [winner, setWinner] = useState<(string | null)>(null);
   const [wonConditions, setWonConditions] = useState<number[]>([]);
-
-  useDisconnect();
 
   const location = useLocation();
 

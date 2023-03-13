@@ -3,7 +3,6 @@ import { useState, useMemo, useEffect, useCallback } from "react";
 import { primary, secondary, tertiary } from "../../pallette";
 import { useNavigate } from "react-router-dom";
 import { socketOn, socketOff, socketEmit } from '../../utils/socket';
-import useDisconnect from "../../hooks/useDisconnect";
 
 // chakra-ui
 import { Box, Flex, Button, Input, Text, Heading, Divider } from "@chakra-ui/react";
@@ -13,8 +12,6 @@ const Home = () => {
   const [joinError, setJoinError] = useState<string | null>(null);
 
   const navigate = useNavigate();
-
-  useDisconnect();
   
   const handleJoinRoom = useCallback(() => {
       roomId && socketEmit("check-room", roomId);
