@@ -16,6 +16,11 @@ const io = new Server(httpServer, {
   cors: {
     origin: '*',
   },
+  cookie: {
+    name: 'tictactoe-socket-cookie',
+    httpOnly: true,
+    sameSite: 'strict'
+  }
 });
 
 console.log('Server up and running :)');
