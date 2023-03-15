@@ -1,22 +1,25 @@
 // imports
 import { Server, Socket } from "socket.io";
-import { createServer } from "http";
+import express from 'express';
 import checkWinner from "./utils/checkWinner.js";
+import http from 'http';
 
 // types & interfaces
 import { RoomI } from "./interfaces/RoomI";
+
+const app = express();
 
 const PORT = process.env.PORT || 8000;
 
 const rooms: { [key: number | string]: RoomI } = {};
 
+const server = http.createServer(app);
+
 // server init
-const httpServer = createServer();
-const io = new Server(httpServer, {
-  cors: {
-    origin: '*',
-  },
-  pingTimeout: 120_000
+const io = new Server(server, { cors: { origin: "*" } });
+
+server.listen(PORT, () => {
+  console.log("Server listening on PORT: " + PORT);
 });
 
 console.log('Server up and running :)');
@@ -197,5 +200,3 @@ io.on("connection", (socket: Socket) => {
     }
   });
 });
-
-httpServer.listen(PORT);
