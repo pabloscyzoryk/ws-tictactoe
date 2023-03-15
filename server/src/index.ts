@@ -16,6 +16,7 @@ const io = new Server(httpServer, {
   cors: {
     origin: '*',
   },
+  pingTimeout: 120_000
 });
 
 console.log('Server up and running :)');
@@ -81,6 +82,7 @@ io.on("connection", (socket: Socket) => {
 
     socket.join(roomId);
     io.to(roomId).emit("update", rooms[roomId]);
+    console.log(rooms, rooms[roomId]);
   });
 
   socket.on("move", (roomId: string, move: number) => {
